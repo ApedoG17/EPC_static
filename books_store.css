@@ -353,59 +353,84 @@ input[type="radio"]:disabled + label {
     border-color: var(--success-green);
 }
 
-/* Enhanced Mobile Responsiveness */
+/* Enhanced Loading States */
+.purchase-btn.loading,
+.pay-now-btn.loading,
+.upload-btn.loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+    background-image: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    background-size: 200% 100%;
+    animation: gradient-shift 1.5s infinite linear;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+/* Enhanced Modal Transitions */
+.modal.active .modal-content {
+    animation: modalPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes modalPop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Enhanced File Upload Feedback */
+.file-upload.dragover {
+    border-color: var(--success-green);
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.file-upload .upload-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: var(--success-green);
+    transition: width 0.3s ease;
+}
+
+/* Enhanced Payment Method Transitions */
+.payment-fields {
+    transform-origin: top;
+    transition: all 0.3s ease;
+}
+
+.payment-fields.hidden {
+    transform: scaleY(0);
+    height: 0;
+    opacity: 0;
+    margin: 0;
+}
+
+/* Enhanced Success Modal */
+.success-icon {
+    animation: checkmark 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+@keyframes checkmark {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design Refinements */
 @media (max-width: 768px) {
-    .payment-form {
-        padding: 1rem;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .delivery-options {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .price-option {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
-
-    .bank-details {
-        font-size: 0.9rem;
-    }
-
-    .file-upload {
-        height: 100px;
-    }
-
-    .modal-content {
+    .book-card {
         margin: 1rem;
-        padding: 1rem;
-        max-height: 90vh;
-        overflow-y: auto;
     }
-}
-
-/* Payment Processing Feedback */
-.payment-processing {
-    text-align: center;
-    padding: 2rem;
-}
-
-.payment-processing .spinner {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 3px solid rgba(var(--primary-color), 0.3);
-    border-radius: 50%;
-    border-top-color: var(--primary-color);
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
+    
+    .payment-form .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+        margin: 0.5rem;
+    }
 }
