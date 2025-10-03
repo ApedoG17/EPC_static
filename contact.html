@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EXPLICIT PRO.CONSULT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>EXPLICIT PRO.CONSULT</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>We're here to help you succeed in your project management journey. Reach out to us for any questions, support, or collaboration opportunities.</p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Send Us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="pmp-training">PMP Training</option>
+                                <option value="ms-project">MS Project Training</option>
+                                <option value="books">Books & Resources</option>
+                                <option value="career">Career Guidance</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="support">Technical Support</option>
+                                <option value="ceo">Message for CEO</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Subscribe to receive updates on new courses, resources, and project management insights</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="contact-details-container">
+                    <h2>Contact Information</h2>
+                    
+                    <!-- Primary Contact -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Main Office</h3>
+                            <p>EXPLICIT PRO.CONSULT</p>
+                            <p>123 Project Management Avenue</p>
+                            <p>Accra, Ghana</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Call Us</h3>
+                            <p><a href="tel:+233123456789">+233 123 456 789</a></p>
+                            <p><a href="tel:+233987654321">+233 987 654 321</a></p>
+                            <p class="contact-note">Monday - Friday, 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Email Us</h3>
+                            <p><a href="mailto:info@explicitproconsult.com">info@explicitproconsult.com</a></p>
+                            <p><a href="mailto:support@explicitproconsult.com">support@explicitproconsult.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- CEO Contact -->
+                    <div class="contact-card ceo-contact">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>CEO's Office</h3>
+                            <p><strong>Dr. Kwame Mensah</strong></p>
+                            <p><a href="mailto:ceo@explicitproconsult.com">ceo@explicitproconsult.com</a></p>
+                            <p class="contact-note">For strategic partnerships and executive inquiries</p>
+                        </div>
+                    </div>
+
+                    <!-- Website -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Website</h3>
+                            <p><a href="https://www.explicitproconsult.com" target="_blank">www.explicitproconsult.com</a></p>
+                            <p class="contact-note">Visit our website for latest updates</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-media-section">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/explicitproconsult" target="_blank" class="social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/explicitproconsult" target="_blank" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/explicitproconsult" target="_blank" class="social-link linkedin">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://twitter.com/explicitproconsult" target="_blank" class="social-link twitter">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Hours & Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <div class="support-grid">
+                <div class="support-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Office Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM GMT</p>
+                    <p>Saturday: 10:00 AM - 2:00 PM GMT</p>
+                    <p>Sunday: Closed</p>
+                </div>
+
+                <div class="support-card">
+                    <i class="fas fa-reply"></i>
+                    <h3>Quick Response</h3>
+                    <p>We typically respond to all inquiries within 24 hours during business days</p>
+                    <p>Emergency support available for enrolled students</p>
+                </div>
+
+                <div class="support-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Support</h3>
+                    <p>Join our growing community of project management professionals</p>
+                    <p>Access to exclusive forums and networking events</p>
+                </div>
+
+                <div class="support-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Visit Our Office</h3>
+                    <p>We welcome scheduled visits and consultations</p>
+                    <p>Free parking available for clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Find Us</h2>
+            <div class="map-container">
+                <!-- Google Maps Embed -->
+                <div class="map-placeholder">
+                    <div class="map-content">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Our Location</h3>
+                        <p>123 Project Management Avenue, Accra, Ghana</p>
+                        <p>Near the National Project Management Institute</p>
+                        <a href="https://maps.google.com/?q=123+Project+Management+Avenue,Accra,Ghana" target="_blank" class="directions-btn">
+                            <i class="fas fa-directions"></i>
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+                <!-- In production, replace with actual Google Maps embed -->
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.507799366955!2d-0.150261925018316!3d5.650679932833021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzknMDIuNCJOIDDCsDA4JzUyLjEiVw!5e0!3m2!1sen!2sgh!4v1234567890" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact Banner -->
+    <section class="emergency-banner">
+        <div class="container">
+            <div class="emergency-content">
+                <div class="emergency-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="emergency-text">
+                    <h3>Urgent Training Support?</h3>
+                    <p>For enrolled students needing immediate technical support during training sessions</p>
+                </div>
+                <div class="emergency-contact">
+                    <a href="tel:+233123456789" class="emergency-btn">
+                        <i class="fas fa-phone"></i>
+                        Call Emergency Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Same Footer as other pages -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EXPLICIT PRO. CONSULT</h3>
+                    <p>Guiding professionals through project management excellence with expert training, resources, and career support.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="books.html">Books & Resources</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-details">
+                        <p><strong>Office Hours:</strong></p>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <div class="footer-social">
+                            <a href="https://www.facebook.com/explicitproconsult" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/explicitproconsult" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/explicitproconsult" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EXPLICIT PRO. CONSULT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>
