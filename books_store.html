@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Resources - EXPLICIT PRO.CONSULT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>EXPLICIT PRO.CONSULT</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="books.html" class="active">Books</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Books Hero Section -->
+    <section class="books-hero">
+        <div class="container">
+            <h1>Books & Resources</h1>
+            <p>Carefully curated collection of PMP guides, project management resources, and essential reading materials to accelerate your professional development.</p>
+        </div>
+    </section>
+
+    <!-- Book Categories Filter -->
+    <section class="book-categories">
+        <div class="container">
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">All Resources</button>
+                <button class="filter-btn" data-filter="pmp">PMP Certification</button>
+                <button class="filter-btn" data-filter="agile">Agile Methodology</button>
+                <button class="filter-btn" data-filter="ms-project">MS Project</button>
+                <button class="filter-btn" data-filter="career">Career Development</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Grid -->
+    <section class="books-grid-section">
+        <div class="container">
+            <div class="books-grid">
+                <!-- Book Card 1 -->
+                <div class="book-card" data-category="pmp">
+                    <div class="book-image">
+                        <img src="images/pmp-guide-cover.jpg" alt="PMP Certification Mastery Guide" onerror="this.src='https://via.placeholder.com/200x250/4A90E2/FFFFFF?text=PMP+Guide'">
+                        <span class="format-badge digital">Digital</span>
+                        <span class="format-badge physical">Physical</span>
+                    </div>
+                    <div class="book-details">
+                        <h3>PMP Certification Mastery Guide</h3>
+                        <p class="book-description">Complete guide to passing the PMP exam on your first attempt. Includes practice questions and study strategies.</p>
+                        <div class="book-meta">
+                            <span class="pages">📖 350 pages</span>
+                            <span class="format">📄 PDF, EPUB, Word</span>
+                        </div>
+                        <div class="pricing">
+                            <div class="price-option">
+                                <span class="option">Digital Download:</span>
+                                <span class="price">$49.99</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="option">Printed Book + Delivery:</span>
+                                <span class="price">$69.99</span>
+                            </div>
+                        </div>
+                        <button class="purchase-btn" data-book="pmp-guide">Purchase Now</button>
+                    </div>
+                </div>
+
+                <!-- Book Card 2 -->
+                <div class="book-card" data-category="ms-project">
+                    <div class="book-image">
+                        <img src="images/ms-project-guide.jpg" alt="Microsoft Project Complete Guide" onerror="this.src='https://via.placeholder.com/200x250/50C878/FFFFFF?text=MS+Project'">
+                        <span class="format-badge digital">Digital</span>
+                    </div>
+                    <div class="book-details">
+                        <h3>Microsoft Project Complete Guide</h3>
+                        <p class="book-description">From basics to advanced features. Learn to plan, track, and manage projects effectively.</p>
+                        <div class="book-meta">
+                            <span class="pages">📖 280 pages</span>
+                            <span class="format">📄 PDF, Word</span>
+                        </div>
+                        <div class="pricing">
+                            <div class="price-option">
+                                <span class="option">Digital Download:</span>
+                                <span class="price">$39.99</span>
+                            </div>
+                        </div>
+                        <button class="purchase-btn" data-book="ms-project-guide">Purchase Now</button>
+                    </div>
+                </div>
+
+                <!-- Book Card 3 -->
+                <div class="book-card" data-category="agile">
+                    <div class="book-image">
+                        <img src="images/agile-handbook.jpg" alt="Agile Project Management Handbook" onerror="this.src='https://via.placeholder.com/200x250/FF6B6B/FFFFFF?text=Agile+Guide'">
+                        <span class="format-badge digital">Digital</span>
+                        <span class="format-badge physical">Physical</span>
+                    </div>
+                    <div class="book-details">
+                        <h3>Agile Project Management Handbook</h3>
+                        <p class="book-description">Master Scrum, Kanban, and Lean methodologies with practical examples and case studies.</p>
+                        <div class="book-meta">
+                            <span class="pages">📖 320 pages</span>
+                            <span class="format">📄 PDF, EPUB</span>
+                        </div>
+                        <div class="pricing">
+                            <div class="price-option">
+                                <span class="option">Digital Download:</span>
+                                <span class="price">$44.99</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="option">Printed Book + Delivery:</span>
+                                <span class="price">$64.99</span>
+                            </div>
+                        </div>
+                        <button class="purchase-btn" data-book="agile-handbook">Purchase Now</button>
+                    </div>
+                </div>
+
+                <!-- Add more book cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Upload Section (Visible only to admin) -->
+    <section class="admin-upload" id="adminSection" style="display: none;">
+        <div class="container">
+            <h2>Upload New Resource</h2>
+            <form id="bookUploadForm" class="upload-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookTitle">Book Title</label>
+                        <input type="text" id="bookTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookCategory">Category</label>
+                        <select id="bookCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="pmp">PMP Certification</option>
+                            <option value="agile">Agile Methodology</option>
+                            <option value="ms-project">MS Project</option>
+                            <option value="career">Career Development</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bookDescription">Description</label>
+                    <textarea id="bookDescription" rows="3" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="digitalPrice">Digital Price ($)</label>
+                        <input type="number" id="digitalPrice" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="physicalPrice">Physical Price ($)</label>
+                        <input type="number" id="physicalPrice" step="0.01" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookFile">Upload File (PDF, Word, EPUB)</label>
+                    <input type="file" id="bookFile" accept=".pdf,.doc,.docx,.epub">
+                </div>
+
+                <div class="form-group">
+                    <label for="bookCover">Book Cover Image</label>
+                    <input type="file" id="bookCover" accept="image/*">
+                </div>
+
+                <button type="submit" class="upload-btn">Upload Resource</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Complete Your Purchase</h2>
+            
+            <div class="purchase-summary">
+                <h3 id="selectedBookTitle">Book Title</h3>
+                <div class="delivery-options">
+                    <label>
+                        <input type="radio" name="deliveryType" value="digital" checked>
+                        Digital Download
+                    </label>
+                    <label>
+                        <input type="radio" name="deliveryType" value="physical">
+                        Printed Book + Delivery
+                    </label>
+                </div>
+                <div class="total-price">
+                    Total: $<span id="finalPrice">0.00</span>
+                </div>
+            </div>
+
+            <form id="paymentForm" class="payment-form">
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerEmail">Email Address</label>
+                    <input type="email" id="customerEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="mtn">MTN Mobile Money</option>
+                        <option value="telecel">Telecel Cash</option>
+                        <option value="visa">Visa Card</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="bank">Bank Transfer</option>
+                    </select>
+                </div>
+
+                <!-- Mobile Money Fields (shown when selected) -->
+                <div id="mobileMoneyFields" class="payment-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number</label>
+                        <input type="tel" id="mobileNumber" placeholder="e.g., 0551234567">
+                    </div>
+                    <p class="payment-instruction">You will receive a payment prompt on your phone</p>
+                </div>
+
+                <!-- Card Fields (shown when selected) -->
+                <div id="cardFields" class="payment-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Transfer Fields -->
+                <div id="bankFields" class="payment-fields" style="display: none;">
+                    <div class="bank-details">
+                        <p><strong>Bank: ECOBANK Ghana</strong></p>
+                        <p><strong>Account Name: EXPLICIT PRO CONSULT</strong></p>
+                        <p><strong>Account Number: 1234567890123</strong></p>
+                        <p><strong>Branch: Accra Main</strong></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="transactionRef">Transaction Reference</label>
+                        <input type="text" id="transactionRef" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="pay-now-btn">Pay Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">✓</div>
+            <h2>Payment Successful!</h2>
+            <p id="successMessage">Your book has been purchased successfully.</p>
+            <div id="digitalDownload" style="display: none;">
+                <a href="#" class="download-btn" id="downloadLink">Download Your Book</a>
+            </div>
+            <button class="close-success-btn">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Same Footer as other pages -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <h3>EXPLICIT PRO. CONSULT</h3>
+                    <p>Guiding professionals through project management excellence with expert training, resources, and career support.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Books & Resources</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-details">
+                        <p><strong>Office Hours:</strong></p>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 EXPLICIT PRO. CONSULT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="books.js"></script>
+</body>
+</html>

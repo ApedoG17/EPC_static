@@ -582,6 +582,28 @@ footer {
     text-align: center;
 }
 
+.book-store-btn {
+    width: 100%;
+    max-width: 200px;
+    padding: 1rem;
+    background: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.book-store-btn:hover {
+    background: var(--primary-color);
+}
+
+.book-store-btn a {
+    color: var(--white);
+    text-decoration: none;
+}
+
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
