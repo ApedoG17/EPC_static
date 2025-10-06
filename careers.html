@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - EXPLICIT PRO.CONSULT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="careers.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="exp_logo.jpg" alt="EXPLICIT PRO.CONSULT Logo" class="logo-img">
+            <span>EXPLICIT PRO.CONSULT</span>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books_store.html">Books</a></li>
+            <li><a href="careers.html" class="active">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Careers Hero Section -->
+    <section class="careers-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Career Pathways & Guidance</h1>
+                <p class="hero-subtitle">Navigate your project management career with expert insights, practical tips, and proven strategies to advance from beginner to seasoned professionals.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" id="exploreJobsBtn">Explore Current Openings</button>
+                    <button class="btn-secondary" id="careerGuidanceBtn">Get Career Guidance</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Pathways Section -->
+    <section class="career-pathways">
+        <div class="container">
+            <h2>Your Project Management Career Journey</h2>
+            <p class="section-intro">Step-by-step guidance from entry-level positions to senior project management roles with clear milestones and skill requirements.</p>
+            
+            <div class="pathway-timeline">
+                <!-- Entry Level -->
+                <div class="pathway-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Entry Level (0-2 years)</h3>
+                        <span class="stage-duration">Starting Point</span>
+                    </div>
+                    <div class="stage-content">
+                        <h4>Common Roles:</h4>
+                        <ul>
+                            <li>Project Coordinator</li>
+                            <li>Junior Project Manager</li>
+                            <li>Project Assistant</li>
+                        </ul>
+                        <h4>Key Skills to Develop:</h4>
+                        <ul>
+                            <li>Basic project documentation</li>
+                            <li>Stakeholder communication</li>
+                            <li>Meeting facilitation</li>
+                            <li>Time management</li>
+                        </ul>
+                        <div class="stage-salary">
+                            <strong>Average Salary: $45,000 - $65,000</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mid Level -->
+                <div class="pathway-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Mid Level (3-7 years)</h3>
+                        <span class="stage-duration">Growth Phase</span>
+                    </div>
+                    <div class="stage-content">
+                        <h4>Common Roles:</h4>
+                        <ul>
+                            <li>Project Manager</li>
+                            <li>Senior Project Coordinator</li>
+                            <li>Team Lead</li>
+                        </ul>
+                        <h4>Key Skills to Develop:</h4>
+                        <ul>
+                            <li>Budget management</li>
+                            <li>Risk assessment</li>
+                            <li>Team leadership</li>
+                            <li>Agile methodologies</li>
+                        </ul>
+                        <div class="certifications">
+                            <h5>Recommended Certifications:</h5>
+                            <span class="cert-badge">PMP</span>
+                            <span class="cert-badge">PRINCE2</span>
+                            <span class="cert-badge">CSM</span>
+                        </div>
+                        <div class="stage-salary">
+                            <strong>Average Salary: $75,000 - $95,000</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Senior Level -->
+                <div class="pathway-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Senior Level (8+ years)</h3>
+                        <span class="stage-duration">Leadership Phase</span>
+                    </div>
+                    <div class="stage-content">
+                        <h4>Common Roles:</h4>
+                        <ul>
+                            <li>Senior Project Manager</li>
+                            <li>Program Manager</li>
+                            <li>Portfolio Manager</li>
+                            <li>Director of Project Management</li>
+                        </ul>
+                        <h4>Key Skills to Master:</h4>
+                        <ul>
+                            <li>Strategic planning</li>
+                            <li>Executive communication</li>
+                            <li>Organizational change management</li>
+                            <li>Mentorship and coaching</li>
+                        </ul>
+                        <div class="certifications">
+                            <h5>Advanced Certifications:</h5>
+                            <span class="cert-badge">PgMP</span>
+                            <span class="cert-badge">PfMP</span>
+                            <span class="cert-badge">PMI-ACP</span>
+                        </div>
+                        <div class="stage-salary">
+                            <strong>Average Salary: $100,000 - $150,000+</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Job Openings -->
+    <section class="job-openings">
+        <div class="container">
+            <h2>Current Career Opportunities</h2>
+            <p class="section-intro">Join our team and help shape the future of project management education.</p>
+            
+            <div class="jobs-filter">
+                <button class="filter-btn active" data-filter="all">All Positions</button>
+                <button class="filter-btn" data-filter="full-time">Full Time</button>
+                <button class="filter-btn" data-filter="part-time">Part Time</button>
+                <button class="filter-btn" data-filter="remote">Remote</button>
+                <button class="filter-btn" data-filter="internship">Internship</button>
+            </div>
+
+            <div class="jobs-grid">
+                <!-- Job 1 -->
+                <div class="job-card" data-type="full-time remote">
+                    <div class="job-header">
+                        <h3>Senior Project Management Trainer</h3>
+                        <span class="job-type full-time">Full Time</span>
+                        <span class="job-location remote">Remote</span>
+                    </div>
+                    <div class="job-details">
+                        <p class="job-description">We're seeking an experienced project management professional to develop and deliver training programs for PMP certification and advanced project management methodologies.</p>
+                        <div class="job-meta">
+                            <span><i class="fas fa-briefcase"></i> 5+ years experience</span>
+                            <span><i class="fas fa-graduation-cap"></i> PMP Required</span>
+                            <span><i class="fas fa-clock"></i> Posted 2 days ago</span>
+                        </div>
+                        <div class="job-skills">
+                            <span class="skill-tag">PMP</span>
+                            <span class="skill-tag">Agile</span>
+                            <span class="skill-tag">Training</span>
+                            <span class="skill-tag">Curriculum Development</span>
+                        </div>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-btn" data-job="senior-trainer">Apply Now</button>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card" data-type="full-time">
+                    <div class="job-header">
+                        <h3>Content Development Specialist</h3>
+                        <span class="job-type full-time">Full Time</span>
+                        <span class="job-location">Accra, Ghana</span>
+                    </div>
+                    <div class="job-details">
+                        <p class="job-description">Create engaging project management content, including study guides, practice exams, and training materials for our global audience.</p>
+                        <div class="job-meta">
+                            <span><i class="fas fa-briefcase"></i> 3+ years experience</span>
+                            <span><i class="fas fa-graduation-cap"></i> Bachelor's Degree</span>
+                            <span><i class="fas fa-clock"></i> Posted 1 week ago</span>
+                        </div>
+                        <div class="job-skills">
+                            <span class="skill-tag">Content Writing</span>
+                            <span class="skill-tag">Instructional Design</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Research</span>
+                        </div>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-btn" data-job="content-specialist">Apply Now</button>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card" data-type="internship">
+                    <div class="job-header">
+                        <h3>Project Management Intern</h3>
+                        <span class="job-type internship">Internship</span>
+                        <span class="job-location">Accra, Ghana</span>
+                    </div>
+                    <div class="job-details">
+                        <p class="job-description">Gain hands-on experience in project management training and consulting. Perfect for recent graduates or current students.</p>
+                        <div class="job-meta">
+                            <span><i class="fas fa-briefcase"></i> 0-1 years experience</span>
+                            <span><i class="fas fa-graduation-cap"></i> Student/Graduate</span>
+                            <span><i class="fas fa-clock"></i> Posted 3 days ago</span>
+                        </div>
+                        <div class="job-skills">
+                            <span class="skill-tag">Learning</span>
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Organization</span>
+                            <span class="skill-tag">Teamwork</span>
+                        </div>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-btn" data-job="pm-intern">Apply Now</button>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="job-card" data-type="part-time remote">
+                    <div class="job-header">
+                        <h3>MS Project Instructor</h3>
+                        <span class="job-type part-time">Part Time</span>
+                        <span class="job-location remote">Remote</span>
+                    </div>
+                    <div class="job-details">
+                        <p class="job-description">Deliver virtual training sessions on Microsoft Project to professionals worldwide. Flexible hours, expert-level MS Project knowledge required.</p>
+                        <div class="job-meta">
+                            <span><i class="fas fa-briefcase"></i> 3+ years experience</span>
+                            <span><i class="fas fa-graduation-cap"></i> MS Project Expert</span>
+                            <span><i class="fas fa-clock"></i> Posted 5 days ago</span>
+                        </div>
+                        <div class="job-skills">
+                            <span class="skill-tag">MS Project</span>
+                            <span class="skill-tag">Virtual Training</span>
+                            <span class="skill-tag">Technical Skills</span>
+                            <span class="skill-tag">Communication</span>
+                        </div>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-btn" data-job="ms-project-instructor">Apply Now</button>
+                        <button class="details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Development Resources -->
+    <section class="career-resources">
+        <div class="container">
+            <h2>Career Development Resources</h2>
+            <p class="section-intro">We're preparing comprehensive career guides, industry insights, and mentorship resources to help you navigate your project management journey.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Industry Insights</h3>
+                    <p>Stay updated with the latest trends, methodologies, and best practices in project management across various industries.</p>
+                    <span class="coming-soon">Coming Soon</span>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Growth Strategies</h3>
+                    <p>Proven techniques to enhance your skills, expand your network, and accelerate your career progression in project management.</p>
+                    <span class="coming-soon">Coming Soon</span>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Mentorship Program</h3>
+                    <p>Connect with experienced project managers for guidance, advice, and career coaching tailored to your goals.</p>
+                    <span class="coming-soon">Launching Q2 2024</span>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Skills Assessment</h3>
+                    <p>Evaluate your current project management skills and identify areas for improvement and certification preparation.</p>
+                    <span class="coming-soon">Coming Soon</span>
+                </div>
+            </div>
+
+            <div class="newsletter-signup">
+                <h3>Stay Updated on Career Opportunities</h3>
+                <p>Subscribe to our newsletter to be notified when new career resources and job openings become available.</p>
+                <div class="signup-form">
+                    <input type="email" placeholder="Enter your email address">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Us -->
+    <section class="why-work-with-us">
+        <div class="container">
+            <h2>Why Build Your Career With Us?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Professional Growth</h3>
+                    <p>Continuous learning opportunities, certification support, and clear career progression paths.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Competitive Compensation</h3>
+                    <p>Attractive salary packages, performance bonuses, and comprehensive benefits.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Impactful Work</h3>
+                    <p>Help thousands of professionals advance their careers in project management.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Work-Life Balance</h3>
+                    <p>Flexible working arrangements and supportive team environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Apply for <span id="modalJobTitle">Position</span></h2>
+            
+            <form id="jobApplicationForm" class="application-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="applicantName">Full Name *</label>
+                        <input type="text" id="applicantName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantEmail">Email Address *</label>
+                        <input type="email" id="applicantEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="applicantPhone">Phone Number *</label>
+                        <input type="tel" id="applicantPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantLocation">Current Location</label>
+                        <input type="text" id="applicantLocation">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="applicantLinkedIn">LinkedIn Profile</label>
+                    <input type="url" id="applicantLinkedIn" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+
+                <div class="form-group">
+                    <label for="coverLetter">Cover Letter *</label>
+                    <textarea id="coverLetter" rows="5" required placeholder="Tell us why you're interested in this position and what makes you a great fit..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="resumeUpload">Upload Resume/CV *</label>
+                    <input type="file" id="resumeUpload" accept=".pdf,.doc,.docx" required>
+                    <small>Accepted formats: PDF, DOC, DOCX (Max: 5MB)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="portfolioUpload">Portfolio or Work Samples (Optional)</label>
+                    <input type="file" id="portfolioUpload" accept=".pdf,.doc,.docx,.zip">
+                    <small>You can upload multiple files in a ZIP archive</small>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="privacyConsent" required>
+                    <label for="privacyConsent">I agree to the processing of my personal data according to the Privacy Policy *</label>
+                </div>
+
+                <button type="submit" class="submit-application-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Same Footer as other pages -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EXPLICIT PRO. CONSULT</h3>
+                    <p>Guiding professionals through project management excellence with expert training, resources, and career support.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="books.html">Books & Resources</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-details">
+                        <p><strong>Office Hours:</strong></p>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EXPLICIT PRO. CONSULT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="careers.js"></script>
+</body>
+</html>
