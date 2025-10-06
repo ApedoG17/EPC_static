@@ -149,21 +149,35 @@ document.addEventListener('DOMContentLoaded', function() {
             customerName: document.getElementById('customerName').value,
             customerEmail: document.getElementById('customerEmail').value,
             deliveryType: document.querySelector('input[name="deliveryType"]:checked').value,
-            paymentMethod: document.getElementById('paymentMethod').value,
-            totalAmount: document.getElementById('finalPrice').textContent,
-            timestamp: new Date().toISOString()
+            totalAmount: document.getElementById('finalPrice').textContent
         };
         
-        // Add payment-specific data
-        if (formData.paymentMethod === 'mtn' || formData.paymentMethod === 'telecel') {
-            formData.mobileNumber = document.getElementById('mobileNumber').value;
-        } else if (formData.paymentMethod === 'bank') {
-            formData.transactionRef = document.getElementById('transactionRef').value;
-        }
-        
-        // Simulate payment processing
+        // Start Paystack payment
         processPayment(formData);
     });
+
+    // Update the processPayment function
+    function processPayment(paymentData) {
+        const paystack = new PaystackPop();
+        paystack.newTransaction({
+            key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your Paystack public key
+            email: paymentData.customerEmail,
+            amount: parseFloat(paymentData.totalAmount) * 100, // Convert to kobo
+            currency: 'GHS',
+            ref: 'EPC_' + Math.floor(Math.random() * 1000000000 + 1),
+            onSuccess: function(response) {
+                verifyPayment(response, paymentData);
+            },
+            onCancel: function() {
+                showErrorModal('Payment was cancelled');
+            },
+            metadata: {
+                book_id: paymentData.bookId,
+                book_title: paymentData.bookTitle,
+                delivery_type: paymentData.deliveryType
+            }
+        });
+    }
 
     // Simulate Payment Processing
     function processPayment(paymentData) {

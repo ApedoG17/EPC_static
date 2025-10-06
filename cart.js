@@ -29,6 +29,11 @@ class ShoppingCart {
                 this.addItem(bookData);
             });
         });
+
+        // Add checkout button handler
+        document.querySelector('.checkout-btn').addEventListener('click', () => {
+            this.handleCheckout();
+        });
     }
 
     addItem(item) {
@@ -82,6 +87,57 @@ class ShoppingCart {
         notification.textContent = message;
         document.body.appendChild(notification);
         setTimeout(() => notification.remove(), 3000);
+    }
+
+    handleCheckout() {
+        const total = this.calculateTotal();
+        if (this.items.length === 0) {
+            alert('Your cart is empty');
+            return;
+        }
+
+        let handler = PaystackPop.setup({
+            key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your Paystack public key
+            email: prompt('Please enter your email:'), // In production, get this from a form
+            amount: total * 100, // Convert to kobo
+            currency: 'GHS',
+            ref: 'EPC_' + Math.floor((Math.random() * 1000000000) + 1),
+            metadata: {
+                custom_fields: [
+                    {
+                        display_name: "Cart Items",
+                        variable_name: "cart_items",
+                        value: JSON.stringify(this.items.map(item => item.title))
+                    }
+                ]
+            },
+            callback: (response) => {
+                this.handlePaymentResponse(response);
+            },
+            onClose: () => {
+                console.log('Payment window closed');
+            }
+        });
+
+        handler.openIframe();
+    }
+
+    calculateTotal() {
+        return this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    }
+
+    handlePaymentResponse(response) {
+        if (response.status === 'success') {
+            // Clear cart
+            this.items = [];
+            this.updateCart();
+            
+            // Show success message
+            alert('Payment successful! Your books will be delivered shortly.');
+            
+            // Close cart dropdown
+            document.querySelector('.cart-dropdown').classList.remove('active');
+        }
     }
 }
 
