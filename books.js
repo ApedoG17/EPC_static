@@ -167,13 +167,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Simulate Payment Processing
     function processPayment(paymentData) {
-        console.log('Processing payment:', paymentData);
-        
-        // Simulate API call delay
-        setTimeout(() => {
-            // For demo purposes, always succeed
-            showSuccessModal(paymentData);
-        }, 2000);
+        const orderDetails = {
+            email: paymentData.customerEmail,
+            amount: parseFloat(paymentData.totalAmount),
+            bookTitle: paymentData.bookTitle,
+            bookId: paymentData.bookId,
+            format: paymentData.deliveryType
+        };
+
+        // Initialize Paystack payment
+        initializePaystack(orderDetails);
     }
 
     // Show Success Modal
@@ -273,94 +276,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize admin access (remove this in production)
     // checkAdminAccess();
-
-    // Payment Handling with Paystack
-    function initializePaystack(orderDetails) {
-        const payBtn = document.querySelector('.pay-now-btn');
-        payBtn.classList.add('loading');
-        
-        let handler = PaystackPop.setup({
-            key: config.PAYSTACK_PUBLIC_KEY,
-            email: orderDetails.email,
-            amount: orderDetails.amount * 100,
-            currency: 'GHS',
-            ref: 'EPC_' + Math.floor((Math.random() * 1000000000) + 1),
-            metadata: {
-                custom_fields: [
-                    {
-                        display_name: "Book Title",
-                        variable_name: "book_title",
-                        value: orderDetails.bookTitle
-                    },
-                    {
-                        display_name: "Format",
-                        variable_name: "format",
-                        value: orderDetails.format
-                    }
-                ]
-            },
-            callback: function(response) {
-                verifyPayment(response, orderDetails);
-            },
-            onClose: function() {
-                payBtn.classList.remove('loading');
-                showPaymentModal('Payment window closed. Please try again.');
-            }
-        });
-        
-        handler.openIframe();
-    }
-
-    function verifyPayment(response, orderDetails) {
-        const payBtn = document.querySelector('.pay-now-btn');
-        showLoadingState('Verifying payment...');
-        
-        fetch('/verify-payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                reference: response.reference,
-                orderDetails: orderDetails
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                if (data.downloadUrl) {
-                    handleDigitalDelivery(data.downloadUrl);
-                } else {
-                    handlePhysicalDelivery(orderDetails);
-                }
-            } else {
-                throw new Error(data.message || 'Payment verification failed');
-            }
-        })
-        .catch(error => {
-            console.error('Payment Error:', error);
-            showErrorModal('Payment verification failed. Please contact support.');
-        })
-        .finally(() => {
-            payBtn.classList.remove('loading');
-            hideLoadingState();
-        });
-    }
-
-    function handleDigitalDelivery(downloadUrl) {
-        showSuccessModal('Digital Download', `
-            <p>Your payment was successful! Your download will begin shortly.</p>
-            <a href="${downloadUrl}" class="download-btn" download>Download Now</a>
-        `);
-    }
-
-    function handlePhysicalDelivery(orderDetails) {
-        showSuccessModal('Order Confirmed', `
-            <p>Your payment was successful! Your book will be shipped to:</p>
-            <p>${orderDetails.customerName}<br>${orderDetails.address}</p>
-            <p>Estimated delivery: 3-5 business days</p>
-        `);
-    }
 
     // Utility Functions
     function formatCurrency(amount) {

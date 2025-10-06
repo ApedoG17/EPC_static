@@ -1,0 +1,29 @@
+{
+  "name": "epc-static",
+  "version": "1.0.0",
+  "description": "EPC Static Site with Security Features",
+  "scripts": {
+    "start": "node server/server.js",
+    "generate-certs": "node scripts/generate-certs.js",
+    "setup": "node scripts/setup.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.5.0",
+    "helmet": "^4.6.0",
+    "winston": "^3.3.3",
+    "express-session": "^1.17.2",
+    "connect-redis": "^6.0.0",
+    "redis": "^3.1.2",
+    "dotenv": "^10.0.0",
+    "csurf": "^1.11.0",
+    "express-validator": "^6.12.1",
+    "nodemailer": "^6.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "bcryptjs": "^2.4.3",
+    "node-schedule": "^2.0.0"
+  },
+  "devDependencies": {
+    "mkcert": "^1.4.0"
+  }
+}

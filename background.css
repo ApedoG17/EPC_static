@@ -1,0 +1,36 @@
+/* Professional Background Patterns */
+.bg-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.03;
+    pointer-events: none;
+    background-color: var(--white);
+    background-image: 
+        linear-gradient(30deg, var(--primary-color) 12%, transparent 12.5%, transparent 87%, var(--primary-color) 87.5%, var(--primary-color)),
+        linear-gradient(150deg, var(--primary-color) 12%, transparent 12.5%, transparent 87%, var(--primary-color) 87.5%, var(--primary-color)),
+        linear-gradient(30deg, var(--primary-color) 12%, transparent 12.5%, transparent 87%, var(--primary-color) 87.5%, var(--primary-color)),
+        linear-gradient(150deg, var(--primary-color) 12%, transparent 12.5%, transparent 87%, var(--primary-color) 87.5%, var(--primary-color)),
+        linear-gradient(60deg, var(--secondary-color) 25%, transparent 25.5%, transparent 75%, var(--secondary-color) 75%, var(--secondary-color)),
+        linear-gradient(60deg, var(--secondary-color) 25%, transparent 25.5%, transparent 75%, var(--secondary-color) 75%, var(--secondary-color));
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    animation: backgroundShift 60s linear infinite;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px; }
+    100% { background-position: 200px 200px, 200px 200px, 240px 270px, 240px 270px, 200px 200px, 240px 270px; }
+}
+
+/* Section Background Overlays */
+.section-overlay {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
