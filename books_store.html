@@ -150,19 +150,19 @@
         </div>
     </section>
 
-    <!-- Admin Upload Section (Visible only to admin) -->
-    <section class="admin-upload" id="adminSection" style="display: none;">
+    <!-- Admin Upload Section (Hidden by default, shown after password) -->
+    <section class="admin-upload" id="adminSection" style="display: block;">
         <div class="container">
-            <h2>Upload New Resource</h2>
-            <form id="bookUploadForm" class="upload-form">
+            <h2>Add a New Book or Resource</h2>
+            <form id="bookUploadForm" class="upload-form" action="/admin-upload" method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="bookTitle">Book Title</label>
-                        <input type="text" id="bookTitle" required>
+                        <input type="text" id="bookTitle" name="title" required>
                     </div>
                     <div class="form-group">
                         <label for="bookCategory">Category</label>
-                        <select id="bookCategory" required>
+                        <select id="bookCategory" name="category" required>
                             <option value="">Select Category</option>
                             <option value="pmp">PMP Certification</option>
                             <option value="agile">Agile Methodology</option>
@@ -174,28 +174,28 @@
                 
                 <div class="form-group">
                     <label for="bookDescription">Description</label>
-                    <textarea id="bookDescription" rows="3" required></textarea>
+                    <textarea id="bookDescription" name="description" rows="3" required></textarea>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="digitalPrice">Digital Price ($)</label>
-                        <input type="number" id="digitalPrice" step="0.01" min="0">
+                        <input type="number" id="digitalPrice" name="digital_price" step="0.01" min="0">
                     </div>
                     <div class="form-group">
                         <label for="physicalPrice">Physical Price ($)</label>
-                        <input type="number" id="physicalPrice" step="0.01" min="0">
+                        <input type="number" id="physicalPrice" name="physical_price" step="0.01" min="0">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="bookFile">Upload File (PDF, Word, EPUB)</label>
-                    <input type="file" id="bookFile" accept=".pdf,.doc,.docx,.epub">
+                    <input type="file" id="bookFile" name="file" accept=".pdf,.doc,.docx,.epub">
                 </div>
 
                 <div class="form-group">
                     <label for="bookCover">Book Cover Image</label>
-                    <input type="file" id="bookCover" accept="image/*">
+                    <input type="file" id="bookCover" name="cover_image" accept="image/*">
                 </div>
 
                 <button type="submit" class="upload-btn">Upload Resource</button>
