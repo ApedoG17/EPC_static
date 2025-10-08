@@ -1,404 +1,91 @@
-// Books & Resources E-commerce Functionality
+// Simple book store functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Book data storage (in a real app, this would come from a backend)
-    const booksData = [
+    // Sample book data (in real app, this comes from your backend)
+    const books = [
         {
-            id: 'pmp-guide',
-            title: 'PMP Certification Mastery Guide',
-            category: 'pmp',
-            digitalPrice: 49.99,
-            physicalPrice: 69.99,
-            formats: ['digital', 'physical'],
-            description: 'Complete guide to passing the PMP exam on your first attempt. Includes practice questions and study strategies.',
-            fileUrl: 'downloads/pmp-guide.pdf'
+            id: 1,
+            title: "PMP Certification Mastery Guide",
+            description: "Complete guide to passing the PMP exam on your first attempt. Includes practice questions and study strategies.",
+            price: 49.99,
+            category: "pmp",
+            pages: 350,
+            formats: ["PDF", "EPUB", "Word"],
+            image: "images/pmp-guide.jpg",
+            file: "downloads/pmp-guide.pdf"
         },
         {
-            id: 'ms-project-guide',
-            title: 'Microsoft Project Complete Guide',
-            category: 'ms-project',
-            digitalPrice: 39.99,
-            physicalPrice: null,
-            formats: ['digital'],
-            description: 'From basics to advanced features. Learn to plan, track, and manage projects effectively.',
-            fileUrl: 'downloads/ms-project-guide.pdf'
-        },
-        {
-            id: 'agile-handbook',
-            title: 'Agile Project Management Handbook',
-            category: 'agile',
-            digitalPrice: 44.99,
-            physicalPrice: 64.99,
-            formats: ['digital', 'physical'],
-            description: 'Master Scrum, Kanban, and Lean methodologies with practical examples and case studies.',
-            fileUrl: 'downloads/agile-handbook.pdf'
+            id: 2,
+            title: "Microsoft Project Complete Guide", 
+            description: "From basics to advanced features. Learn to plan, track, and manage projects effectively.",
+            price: 39.99,
+            category: "pmp", 
+            pages: 280,
+            formats: ["PDF", "Word"],
+            image: "images/ms-project-guide.jpg",
+            file: "downloads/ms-project-guide.pdf"
         }
     ];
 
-    // DOM Elements
+    const booksGrid = document.getElementById('booksGrid');
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const bookCards = document.querySelectorAll('.book-card');
-    const purchaseButtons = document.querySelectorAll('.purchase-btn');
-    const paymentModal = document.getElementById('paymentModal');
-    const successModal = document.getElementById('successModal');
-    const closeModalButtons = document.querySelectorAll('.close-modal, .close-success-btn');
-    const paymentMethodSelect = document.getElementById('paymentMethod');
-    const deliveryTypeRadios = document.querySelectorAll('input[name="deliveryType"]');
-    const paymentForm = document.getElementById('paymentForm');
-    const bookUploadForm = document.getElementById('bookUploadForm');
-    const adminSection = document.getElementById('adminSection');
 
-    // Current selected book
-    let selectedBook = null;
+    // Display books
+    function displayBooks(booksToShow) {
+        booksGrid.innerHTML = '';
+        booksToShow.forEach(book => {
+            const bookCard = `
+                <div class="book-card" data-category="${book.category}">
+                    <div class="book-image">
+                        <img src="${book.image}" alt="${book.title}" onerror="this.src='https://via.placeholder.com/200x250/4A90E2/FFFFFF?text=Book+Cover'">
+                    </div>
+                    <div class="book-details">
+                        <h3>${book.title}</h3>
+                        <p class="book-description">${book.description}</p>
+                        <div class="book-meta">
+                            <span>📖 ${book.pages} pages</span>
+                            <span>📄 ${book.formats.join(', ')}</span>
+                        </div>
+                        <div class="pricing">
+                            <div class="price">$${book.price}</div>
+                            <button class="buy-btn" onclick="initiatePayment(${book.id})">
+                                <i class="fas fa-shopping-cart"></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            booksGrid.innerHTML += bookCard;
+        });
+    }
 
-    // Filter Books by Category
+    // Filter books
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
+            const category = this.getAttribute('data-category');
             
-            // Update active filter button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Filter books
-            bookCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // Purchase Button Click
-    purchaseButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const bookId = this.getAttribute('data-book');
-            selectedBook = booksData.find(book => book.id === bookId);
+            const filteredBooks = category === 'all' 
+                ? books 
+                : books.filter(book => book.category === category);
             
-            if (selectedBook) {
-                openPaymentModal(selectedBook);
-            }
+            displayBooks(filteredBooks);
         });
     });
 
-    // Open Payment Modal
-    function openPaymentModal(book) {
-        document.getElementById('selectedBookTitle').textContent = book.title;
-        updatePrice();
-        paymentModal.style.display = 'block';
-        
-        // Reset form
-        paymentForm.reset();
-        showPaymentFields(''); // Hide all payment fields initially
-    }
-
-    // Update Price Based on Delivery Type
-    function updatePrice() {
-        const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
-        let price = 0;
-        
-        if (deliveryType === 'digital' && selectedBook) {
-            price = selectedBook.digitalPrice;
-        } else if (deliveryType === 'physical' && selectedBook) {
-            price = selectedBook.physicalPrice || selectedBook.digitalPrice;
-        }
-        
-        document.getElementById('finalPrice').textContent = price.toFixed(2);
-    }
-
-    // Delivery Type Change
-    deliveryTypeRadios.forEach(radio => {
-        radio.addEventListener('change', updatePrice);
-        
-        // Disable physical option if not available
-        if (radio.value === 'physical' && selectedBook && !selectedBook.physicalPrice) {
-            radio.disabled = true;
-            radio.parentElement.style.opacity = '0.5';
-        }
-    });
-
-    // Show/Hide Payment Fields Based on Method
-    paymentMethodSelect.addEventListener('change', function() {
-        showPaymentFields(this.value);
-    });
-
-    function showPaymentFields(method) {
-        // Hide all payment fields
-        document.querySelectorAll('.payment-fields').forEach(field => {
-            field.style.display = 'none';
-        });
-        
-        // Show relevant fields
-        if (method === 'mtn' || method === 'telecel') {
-            document.getElementById('mobileMoneyFields').style.display = 'block';
-        } else if (method === 'visa' || method === 'mastercard') {
-            document.getElementById('cardFields').style.display = 'block';
-        } else if (method === 'bank') {
-            document.getElementById('bankFields').style.display = 'block';
-        }
-    }
-
-    // Payment Form Submission
-    paymentForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = {
-            bookId: selectedBook.id,
-            bookTitle: selectedBook.title,
-            customerName: document.getElementById('customerName').value,
-            customerEmail: document.getElementById('customerEmail').value,
-            deliveryType: document.querySelector('input[name="deliveryType"]:checked').value,
-            totalAmount: document.getElementById('finalPrice').textContent
-        };
-        
-        // Start Paystack payment
-        processPayment(formData);
-    });
-
-    // Update the processPayment function
-    function processPayment(paymentData) {
-        const paystack = new PaystackPop();
-        paystack.newTransaction({
-            key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your Paystack public key
-            email: paymentData.customerEmail,
-            amount: parseFloat(paymentData.totalAmount) * 100, // Convert to kobo
-            currency: 'GHS',
-            ref: 'EPC_' + Math.floor(Math.random() * 1000000000 + 1),
-            onSuccess: function(response) {
-                verifyPayment(response, paymentData);
-            },
-            onCancel: function() {
-                showErrorModal('Payment was cancelled');
-            },
-            metadata: {
-                book_id: paymentData.bookId,
-                book_title: paymentData.bookTitle,
-                delivery_type: paymentData.deliveryType
-            }
-        });
-    }
-
-    // Simulate Payment Processing
-    function processPayment(paymentData) {
-        console.log('Processing payment:', paymentData);
-        
-        // Simulate API call delay
-        setTimeout(() => {
-            // For demo purposes, always succeed
-            showSuccessModal(paymentData);
-        }, 2000);
-    }
-
-    // Show Success Modal
-    function showSuccessModal(paymentData) {
-        paymentModal.style.display = 'none';
-        
-        const successMessage = document.getElementById('successMessage');
-        const digitalDownload = document.getElementById('digitalDownload');
-        const downloadLink = document.getElementById('downloadLink');
-        
-        if (paymentData.deliveryType === 'digital') {
-            successMessage.textContent = `Thank you for your purchase! Your digital copy of "${paymentData.bookTitle}" is ready for download.`;
-            digitalDownload.style.display = 'block';
-            
-            // Set download link (in real app, this would be a secure download URL)
-            if (selectedBook) {
-                downloadLink.href = selectedBook.fileUrl;
-                downloadLink.setAttribute('download', `${selectedBook.title}.pdf`);
-            }
-        } else {
-            successMessage.textContent = `Thank you for your purchase! Your printed copy of "${paymentData.bookTitle}" will be shipped to you within 3-5 business days.`;
-            digitalDownload.style.display = 'none';
-        }
-        
-        successModal.style.display = 'block';
-        
-        // Send confirmation email (simulated)
-        sendConfirmationEmail(paymentData);
-    }
-
-    // Simulate Email Confirmation
-    function sendConfirmationEmail(paymentData) {
-        console.log('Sending confirmation email to:', paymentData.customerEmail);
-        // In a real app, you would call your backend API here
-    }
-
-    // Close Modals
-    closeModalButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            paymentModal.style.display = 'none';
-            successModal.style.display = 'none';
-        });
-    });
-
-    // Close modal when clicking outside
-    window.addEventListener('click', function(e) {
-        if (e.target === paymentModal) {
-            paymentModal.style.display = 'none';
-        }
-        if (e.target === successModal) {
-            successModal.style.display = 'none';
-        }
-    });
-
-    // Admin Upload Functionality
-    bookUploadForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData();
-        formData.append('title', document.getElementById('bookTitle').value);
-        formData.append('category', document.getElementById('bookCategory').value);
-        formData.append('description', document.getElementById('bookDescription').value);
-        formData.append('digitalPrice', document.getElementById('digitalPrice').value);
-        formData.append('physicalPrice', document.getElementById('physicalPrice').value);
-        
-        const bookFile = document.getElementById('bookFile').files[0];
-        const bookCover = document.getElementById('bookCover').files[0];
-        
-        if (bookFile) formData.append('bookFile', bookFile);
-        if (bookCover) formData.append('bookCover', bookCover);
-        
-        uploadBook(formData);
-    });
-
-    // Simulate Book Upload
-    function uploadBook(formData) {
-        console.log('Uploading book:', Object.fromEntries(formData));
-        
-        // Simulate upload process
-        setTimeout(() => {
-            alert('Book uploaded successfully!');
-            bookUploadForm.reset();
-        }, 1500);
-    }
-
-    // Admin Authentication (Basic - for demo purposes)
-    function checkAdminAccess() {
-        // In a real app, this would check user authentication
-        const isAdmin = localStorage.getItem('isAdmin') === 'true' || 
-                       prompt('Enter admin password:') === 'admin123';
-        
-        if (isAdmin) {
-            localStorage.setItem('isAdmin', 'true');
-            adminSection.style.display = 'block';
-        }
-    }
-
-    // Initialize admin access (remove this in production)
-    // checkAdminAccess();
-
-    // Payment Handling with Paystack
-    function initializePaystack(orderDetails) {
-        const payBtn = document.querySelector('.pay-now-btn');
-        payBtn.classList.add('loading');
-        
-        let handler = PaystackPop.setup({
-            key: config.PAYSTACK_PUBLIC_KEY,
-            email: orderDetails.email,
-            amount: orderDetails.amount * 100,
-            currency: 'GHS',
-            ref: 'EPC_' + Math.floor((Math.random() * 1000000000) + 1),
-            metadata: {
-                custom_fields: [
-                    {
-                        display_name: "Book Title",
-                        variable_name: "book_title",
-                        value: orderDetails.bookTitle
-                    },
-                    {
-                        display_name: "Format",
-                        variable_name: "format",
-                        value: orderDetails.format
-                    }
-                ]
-            },
-            callback: function(response) {
-                verifyPayment(response, orderDetails);
-            },
-            onClose: function() {
-                payBtn.classList.remove('loading');
-                showPaymentModal('Payment window closed. Please try again.');
-            }
-        });
-        
-        handler.openIframe();
-    }
-
-    function verifyPayment(response, orderDetails) {
-        const payBtn = document.querySelector('.pay-now-btn');
-        showLoadingState('Verifying payment...');
-        
-        fetch('/verify-payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                reference: response.reference,
-                orderDetails: orderDetails
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                if (data.downloadUrl) {
-                    handleDigitalDelivery(data.downloadUrl);
-                } else {
-                    handlePhysicalDelivery(orderDetails);
-                }
-            } else {
-                throw new Error(data.message || 'Payment verification failed');
-            }
-        })
-        .catch(error => {
-            console.error('Payment Error:', error);
-            showErrorModal('Payment verification failed. Please contact support.');
-        })
-        .finally(() => {
-            payBtn.classList.remove('loading');
-            hideLoadingState();
-        });
-    }
-
-    function handleDigitalDelivery(downloadUrl) {
-        showSuccessModal('Digital Download', `
-            <p>Your payment was successful! Your download will begin shortly.</p>
-            <a href="${downloadUrl}" class="download-btn" download>Download Now</a>
-        `);
-    }
-
-    function handlePhysicalDelivery(orderDetails) {
-        showSuccessModal('Order Confirmed', `
-            <p>Your payment was successful! Your book will be shipped to:</p>
-            <p>${orderDetails.customerName}<br>${orderDetails.address}</p>
-            <p>Estimated delivery: 3-5 business days</p>
-        `);
-    }
-
-    // Utility Functions
-    function formatCurrency(amount) {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(amount);
-    }
-
-    // Input formatting for card fields
-    document.getElementById('cardNumber')?.addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-        let formattedValue = value.match(/.{1,4}/g)?.join(' ');
-        if (formattedValue) {
-            e.target.value = formattedValue;
-        }
-    });
-
-    document.getElementById('expiryDate')?.addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\//g, '').replace(/[^0-9]/gi, '');
-        if (value.length >= 2) {
-            e.target.value = value.slice(0, 2) + '/' + value.slice(2, 4);
-        }
-    });
-
-    console.log('Books e-commerce system initialized');
+    // Initial display
+    displayBooks(books);
 });
+
+// Payment function (simplified - will integrate with Paystack)
+function initiatePayment(bookId) {
+    // For now, just show an alert
+    alert('This will redirect to Paystack payment page. Book ID: ' + bookId);
+    
+    // In real implementation:
+    // 1. Redirect to Paystack checkout
+    // 2. After payment, redirect to success page with download link
+    // 3. Or use Paystack inline payment modal
+}
